@@ -3,14 +3,6 @@ let fuzzyAnswer = [];
 let fuzzy_temp =[];
 let question = "";
 
-$("#start").click(function () { 
-    
-    let sp = $("#sp").val();
-    let ep = $("#ep").val();
-    let rn = $("#review_number").val();
-    $(".all").html("");
-    creatQuestion(sp, ep, rn); 
-});
 
 function creatQuestion(sp,ep, rn) {
     $.ajax({
@@ -18,9 +10,6 @@ function creatQuestion(sp,ep, rn) {
         type: "GET",//请求方式为get
         dataType: "json", //返回数据格式为json
         success: function (data) {//请求成功完成后要执行的方法 
-            console.log(data);
-            var count = Object.keys(data).length;
-            var count2 = Object.keys(data[0].question).length;
             console.log("---------");
             //console.log(count2);
             /*$("#q1").text(data[0].question[0]);
@@ -75,11 +64,8 @@ function creat(question, i, answer_full, answer_fuzzy) {
 
 $("#send").click(function () {
 
-    let sp = $("#sp").val();
-    let ep = $("#ep").val();
-    let rn = $("#review_number").val();
     $(".all").html("");
-    creatQuestion(sp, ep, rn); 
+    init();
 
 });
 
@@ -89,3 +75,28 @@ function getRandom(min,max){
     console.log(Math.floor(Math.random()*(max-min+1)+min));*/
     return Math.floor(Math.random()*(max-min+1)+min);
 };
+
+function init() {
+    var url = location.href;
+    
+    //取得問號之後的值
+    var temp = url.split("?");
+
+    //將值再度分開
+    var vars = temp[1].split("&");
+
+    //一一顯示出來
+    for (var i = 0; i < vars.length; i++) {
+     console.log(vars[i]);   
+    };
+    /*console.log(vars[0].split("sp=")[1]);
+    console.log(vars[1].split("ep=")[1]);
+    console.log(vars[2].split("rn=")[1]);*/
+    let sp = vars[0].split("sp=")[1];
+    let ep = vars[1].split("ep=")[1];
+    let rn = vars[2].split("rn=")[1];
+
+    creatQuestion(sp, ep, rn);
+}
+
+init();

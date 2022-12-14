@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - Voyage Slider | GSAP</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"rel="stylesheet'><link rel="stylesheet" href="./style.css">
+	<meta charset="UTF-8">
+	<title>CodePen - Voyage Slider | GSAP</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"rel="stylesheet'>
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 </head>
 <body>
@@ -21,19 +23,19 @@
 		</button>
 
 		<div class="cards__wrapper">
-			<div class="card current--card">
+			<div class="card current--card" id="test">
 				<div class="card__image">
-					<img src="https://source.unsplash.com/Z8dtTatMVMw" alt="" />
+				 <img src="https://source.unsplash.com/Z8dtTatMVMw" alt="" />
 				</div>
 			</div>
 
-			<div class="card next--card">
+			<div class="card next--card" id="review">
 				<div class="card__image">
 					<img src="https://source.unsplash.com/9dmycbFE7mQ" alt="" />
 				</div>
 			</div>
 
-			<div class="card previous--card">
+			<div class="card previous--card" id="creat">
 				<div class="card__image">
 					<img src="https://source.unsplash.com/m7K4KzL5aQ8" alt="" />
 				</div>
@@ -53,7 +55,7 @@
 		<div class="info__wrapper">
 			<div class="info current--info">
 				<h1 class="text name">Start Test</h1>
-				<h4 class="text location">開始測試</h4>
+				<h4 class="text location">開始測驗</h4>
 				<p class="text description">答案驗證尚在建立</p>
 			</div>
 
@@ -119,8 +121,10 @@
 	<a href="https://dribbble.com/devloop01" target="_blank"><i class="fab fa-dribbble"></i></a>
 </div>
 <!-- partial -->
-  <script src='https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js'></script><script  src="./script.js"></script>
+<script src='https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js'></script>
+<script  src="./script.js"></script>
+<script type="text/javascript" src="jump.js"></script>
 
 </body>
 </html>
