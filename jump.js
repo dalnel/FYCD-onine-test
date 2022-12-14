@@ -1,11 +1,11 @@
 $("#test").click(function () {
-    $(location).attr("href","test.html")
+    $(location).attr("href","./pageChoice.html")
 })
 
 $("#review").click(function () {
-    $(location).attr("href","review.html")
+    $(location).attr("href","./pageChoice.html")
 })
 
 $("#creat").click(function () {
-    $(location).attr("href","creat.html")
+    $(location).attr("href","./pageChoice.html")
 })
