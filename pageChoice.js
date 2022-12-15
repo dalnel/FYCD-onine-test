@@ -1,7 +1,7 @@
 
 $("#send").click(function (){
 
-    if($("#sp").val() > $("#ep").val())
+    if(parseInt($("#sp").val()) > parseInt($("#ep").val()))
     {
         alert("起始頁不得大於結束頁");
         var error = true;
