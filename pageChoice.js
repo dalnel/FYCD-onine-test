@@ -1,24 +1,41 @@
 
 $("#send").click(function (){
+
+    if($("#sp").val() > $("#ep").val())
+    {
+        alert("起始頁不得大於結束頁");
+        var error = true;
+    }
+    else if($("#sp").val() == "" || $("#ep").val() == "" || $("#review_number").val() == "")
+    {
+        alert("頁數不可為空白");
+        var error = true;
+    }
+    else
+    {
+        var error = false;
+    }
     
-    if(select == "1")
+    if(select == "1" && !error)
     {
         console.log("1");
-        //document.location.href ='review.html?sp=' + $("#sp").val() + '&ep=' + $("#ep").val() + '&rn=' + $("#review_number").val();  
+        var sp = $("#sp").val() - 10;
+        var ep = $("#ep").val() - 10
+        //document.location.href ='review.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();     
     }
-    else if(select == "2")
+    else if(select == "2" && !error)
     {
         console.log("2");
         var sp = $("#sp").val() - 10;
         var ep = $("#ep").val() - 10
         document.location.href ='review.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();      
     }
-    else if(select == "3")
+    else if(select == "3" && !error)
     {
         console.log("3");
         var sp = $("#sp").val() - 10;
         var ep = $("#ep").val() - 10
-        //document.location.href ='review.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();  
+        document.location.href ='creat.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();  
     }
 
 })

@@ -27,18 +27,18 @@ function creatQuestion(sp,ep, rn) {
                     fuzzy_temp.push(data[j].answer_fuzzy[l][y]);
                 } //儲存模糊答案
 
-                creat(data[j].question[l], i, data[j].answer_full[l], fuzzy_temp)
+                creat(data[j].question[l], i, data[j].answer_full[l], fuzzy_temp, data[j].page)
                 fuzzy_temp = [];
             }
         }
     })
 }
 
-function creat(question, i, answer_full, answer_fuzzy) {
+function creat(question, i, answer_full, answer_fuzzy, p) {
     var el = $(".all");
     var aa = `<section class="main">
     <p>
-        <label>問題: </label> 
+        <label style="font-size:17px">問題(P${p})：</label> 
     </p>
     <h1 id="q${i}">${question}</h1> 
 

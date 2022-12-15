@@ -209,6 +209,7 @@ function init() {
 }
 
 const waitForImages = () => {
+	alert("更動日誌：\n本網頁為個人學術研究用\n建立題目可以使用了")
 	const images = [...document.querySelectorAll("img")];
 	const totalImages = images.length;
 	let loadedImages = 0;

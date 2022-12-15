@@ -96,7 +96,7 @@ button:focus {
   height: auto;
 }
 .cardList__btn {
-  --btn-size: 35px;
+  --btn-size: 90px;
   width: var(--btn-size);
   height: var(--btn-size);
   position: absolute;

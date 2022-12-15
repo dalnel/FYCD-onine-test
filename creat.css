@@ -1,0 +1,19 @@
+section {
+    border-width: 5px;
+    border-bottom: solid;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-color: #fd8b25;
+  }
+
+.input_text{
+  width: auto;
+}
+
+.input_text input{
+  width: 500px;
+  height: 150px;
+  font-size: 20px;
+  outline: none;
+  border:none;
+}
