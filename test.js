@@ -1,15 +1,18 @@
 let fullAnswer = [];
 let fuzzyAnswer = [];
 let question = "";
+let rn;
 
 $("#start").click(function () { 
     
-    let sp = $("#sp").val();
-    let ep = $("#ep").val();
-    creatQuestion(sp, ep); 
+    let sp = $("#sp").val() - 10;
+    let ep = $("#ep").val() - 10;
+    rn = $("#review_number").val();
+    $("#retest").hide();
+    creatQuestion(sp, ep, rn); 
 });
 
-function creatQuestion(sp,ep) {
+function creatQuestion(sp,ep,rn) {
     $.ajax({
         url: "QA.json",//同文件夹下的json文件路径
         type: "GET",//请求方式为get
@@ -23,14 +26,14 @@ function creatQuestion(sp,ep) {
             /*$("#q1").text(data[0].question[0]);
             $("#a1_full").text(data[0].answer_full[0]);
             $("#a1_fuzzy").text(data[0].answer_fuzzy[0]);*/
-            for (let i = 0; i <= 15; i++) {
+            for (let i = 0; i < rn; i++) {
                 let j = getRandom(sp,ep); //隨機生成頁數
                 let k = Object.keys(data[j].question).length;
                 let l = Math.floor(Math.random() * k); //隨機生成上面頁數下的題數
                 fullAnswer.push(data[j].answer_full[l]); //儲存完整的答案
                 fuzzyAnswer.push(data[j].answer_fuzzy[l]); //儲存模糊答案
-                console.log(data[j].question[l]);
-                creat(data[j].question[l], i)
+                console.log(fuzzyAnswer[i]);
+                creat(data[j].question[l], i);
             }
         }
     })
@@ -40,7 +43,7 @@ function creat(question, i) {
     var el = $(".all");
     var aa = `<section class="main">
     <p>
-        <label>問題: </label> 
+        <label>${i+1}.問題: </label> 
     </p>
     <h1 id="q${i}">${question}</h1> 
 
@@ -57,30 +60,52 @@ function creat(question, i) {
 }
 
 $("#send").click(function () {
+    
+    let sp = $("#sp").val();
+    let ep = $("#ep").val(); //((ep - sp) + 1)
 
-    for(let i = 0; i <=15; i++)
+    for(let i = 0; i < rn; i++)
     {
         let answer = $("#answer" + i).val();
-        if (answer === fullAnswer[i]) {
-            console.log("same");
-            let a = $("#a" + i);
-            let b = `<i class="fa-regular fa-circle-check fa-2x"></i>`;
-            a.append(b)
+        let rate = 0; //答對率
+
+        if(answer === fullAnswer[i])
+        {
+            let correctRate = 1;
+            rightAnswer(correctRate, i);
         }
-        else if (answer.includes(fuzzyAnswer[i])) {
-            console.log("fuzzy answer");
-            let a = $("#a" + i);
-            let b = `<i class="fa-regular fa-circle-check fa-2x"></i>`;
-            a.append(b)
+        else
+        {
+            for(let j = 0; j <= fuzzyAnswer[i].length; j++)
+            {
+                //console.log(fuzzyAnswer[j].length);
+                console.log(fuzzyAnswer[i][j]);
+                if(answer.includes(fuzzyAnswer[i][j]))
+                {
+                    rate = rate + 1;
+                }
+            }
+            let correctRate = rate / fuzzyAnswer[i].length;
+            console.log(correctRate);
+            rightAnswer(correctRate, i);
         }
-        else {
-            console.log("wrong");
-            let a = $("#a" + i);
-            let b = `<i class="fa-regular fa-circle-xmark fa-2x"></i>`;
-            a.append(b)
-        }       
+        
+   
     }
     $("#send").hide();
+    $("#retest").show();
+
+});
+
+$("#retest").click(function () {
+
+    $(".all").html("");
+    let sp = $("#sp").val() - 10;
+    let ep = $("#ep").val() - 10;
+    rn = $("#review_number").val();
+    $("#retest").hide();
+    $("#send").show();
+    creatQuestion(sp, ep, rn); 
 
 });
 
@@ -89,4 +114,27 @@ function getRandom(min,max){
     console.log(max);
     console.log(Math.floor(Math.random()*(max-min+1)+min));*/
     return Math.floor(Math.random()*(max-min+1)+min);
+};
+
+function rightAnswer(correctRate, i){
+
+    if (correctRate == 1) {
+        console.log("same");
+        let a = $("#a" + i);
+        let b = `<i class="fa-regular fa-circle-check fa-2x"></i>`;
+        a.append(b)
+    }
+    else if (correctRate >= 0.5) {
+        console.log("fuzzy answer");
+        let a = $("#a" + i);
+        let b = `<i class="fa-regular fa-circle-check fa-2x"></i>`;
+        a.append(b)
+    }
+    else {
+        console.log("wrong");
+        let a = $("#a" + i);
+        let b = `<i class="fa-regular fa-circle-xmark fa-2x"></i>`;
+        a.append(b)
+    }    
+
 };

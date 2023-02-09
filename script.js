@@ -209,7 +209,7 @@ function init() {
 }
 
 const waitForImages = () => {
-	alert("更動日誌：\n本網頁為個人學術研究用\n建立題目可以使用了")
+	alert("更動日誌：\n本網頁為個人學術研究用\n開始測驗功能上線\n若測驗時答案有疑問，可到首頁右下角進行回報")
 	const images = [...document.querySelectorAll("img")];
 	const totalImages = images.length;
 	let loadedImages = 0;
