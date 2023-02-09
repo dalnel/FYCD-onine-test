@@ -2,12 +2,16 @@ let fullAnswer = [];
 let fuzzyAnswer = [];
 let question = "";
 let rn;
+$("#send").hide();
+$("#retest").hide();
+
 
 $("#start").click(function () { 
     
     let sp = $("#sp").val() - 10;
     let ep = $("#ep").val() - 10;
     rn = $("#review_number").val();
+    $("#send").show();
     $("#retest").hide();
     creatQuestion(sp, ep, rn); 
 });
