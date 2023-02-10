@@ -1,25 +1,43 @@
+
 .input_div{
-    display: block;
-    width: 500px;
-    height: 500px;
-    margin: 15% auto;
+  display: block;
+  width: auto;
+  height: 500px;
+  margin: 10% auto;
 }
 .input{
+  display: block;
+  margin: auto;
+  height: 55px;
+  width: 450px;
+  border-radius: 15px;
+  font-size: 35px;
+  text-align: center;
+}  
+
+
+@media screen and (max-width:768px) {
+  .input_div{
     display: block;
-    height: 50px;
-    width: 500px;
+    width: auto;
+    height: 500px;
+    margin: 55% auto;
+  }
+  .input{
+    display: block;
+    margin: auto;
+    height: 65px;
+    width: 350px;
     border-radius: 15px;
-    font-size: 20px;
+    font-size: 35px;
     text-align: center;
+  }  
 }
-
-
-
 
 
 
 body {
-    font-size: 18px;
+    font-size: 20px;
     font-family: "Helvetica", "Arial", sans-serif;
     text-align: center;
     background: linear-gradient(180deg, #F1C2E4, #BDAAED);
@@ -29,7 +47,7 @@ body {
     font-family: "Helvetica", "Arial", sans-serif;
     display: inline-block;
     font-size: 1em;
-    padding: 1em 2em;
+    padding: 0.5em 1em;
     margin-top: 10px;
     margin-bottom: 10px;
     -webkit-appearance: none;
