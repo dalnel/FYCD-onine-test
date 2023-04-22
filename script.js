@@ -194,7 +194,8 @@ function removeCardEvents(card) {
 }
 
 function init() {
-
+		
+	alert("此網站為個人學習研究用\n任何問題可點選下方信件圖示，與我聯絡\n其它詳細資訊可以點選下方網站圖示");
 	let tl = gsap.timeline();
 
 	tl.to(cardsContainerEl.children, {
@@ -226,6 +227,7 @@ function init() {
 }
 
 const waitForImages = () => {
+	
 	const images = [...document.querySelectorAll("img")];
 	const totalImages = images.length;
 	let loadedImages = 0;
