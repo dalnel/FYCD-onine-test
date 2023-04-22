@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>下拉選單示例</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	<style>
+		.but 
+		{
+			background-color: #dd0ca2;
+			border: none;
+            border-radius: 5px;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 10px 20px;
+			cursor: pointer;
+		}
+	</style>
+
+  </head>
+  <body>
+    <h1>下拉選單示例</h1>
+    <label for="options">選擇一個選項：</label>
+    <select id="options" onchange="showItems()">
+      <option value="">請選擇頁數</option>
+      <option value="option1">P10~19</option>
+      <option value="option2">P20~29</option>
+      <option value="option3">P30~39</option>
+      <option value="option4">P40~49</option>
+      <option value="option5">P50~59</option>
+      <option value="option6">P60~69</option>
+      <option value="option7">P70~79</option>
+      <option value="option8">P80~89</option>
+      <option value="option9">P90~99</option>
+      <option value="option10">P100~109</option>
+      <option value="option11">P110~119</option>
+      <option value="option12">P120~129</option>
+      <option value="option13">P130~139</option>
+      <option value="option14">P140~149</option>
+      <option value="option15">P150~159</option>
+      <option value="option16">P160~169</option>
+      <option value="option17">P170~172</option>
+
+    </select>
+    <form id="itemList">
+        
+    </form>
+    <button class="but" type="button" onclick="submitForm()">Submit</button>
+    
+    <script>
+        function showItems() {
+            var selectBox = document.getElementById("options");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            var itemList = document.getElementById("itemList");
+
+            // 清空項目列表
+            itemList.innerHTML = "";
+
+            // 根據選項值，顯示對應的項目
+            switch (selectedValue) {
+                case "option1":
+                    creatQuestion(10, 19);
+                    break;
+
+                case "option2":
+                    creatQuestion(20, 29);
+                    break;
+
+                case "option3":
+                    creatQuestion(30, 39);
+                    break;
+
+                case "option4":
+                    creatQuestion(40, 49);
+                    break;
+
+                case "option5":
+                    creatQuestion(50, 59);
+                    break;
+
+                case "option6":
+                    creatQuestion(60, 69);
+                    break;
+
+                case "option7":
+                    creatQuestion(70, 79);
+                    break;
+
+                case "option8":
+                    creatQuestion(80, 89);
+                    break;
+
+                case "option9":
+                    creatQuestion(90, 99);
+                    break;
+
+                case "option10":
+                    creatQuestion(100, 109);
+                    break;
+
+                case "option11":
+                    creatQuestion(110, 119);
+                    break;
+
+                case "option12":
+                    creatQuestion(120, 129);
+                    break;
+
+                case "option13":
+                    creatQuestion(130, 139);
+                    break;
+
+                case "option14":
+                    creatQuestion(140, 149);
+                    break;
+
+                case "option15":
+                    creatQuestion(150, 159);
+                    break;
+
+                case "option16":
+                    creatQuestion(160, 169);
+                    break;
+
+                case "option17":
+                    creatQuestion(170, 172);
+                    break;
+
+
+            }
+        }
+
+    function creatQuestion(sp,ep) {
+    $.ajax({
+        url: "QA.json",//同文件夹下的json文件路径
+        type: "GET",//请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) {//请求成功完成后要执行的方法 
+            console.log(data);
+            var count = Object.keys(data).length;
+            var count2 = Object.keys(data[0].question).length;
+            console.log("---------");
+            //console.log(count2);
+            /*$("#q1").text(data[0].question[0]);
+            $("#a1_full").text(data[0].answer_full[0]);
+            $("#a1_fuzzy").text(data[0].answer_fuzzy[0]);*/
+            for (let i = sp; i <= ep; i++) {
+                //let j = getRandom(sp,ep); //隨機生成頁數
+                let k = Object.keys(data[i - 10].question).length;
+                //let l = Math.floor(Math.random() * k); //隨機生成上面頁數下的"題數"
+                //console.log(fuzzyAnswer[i]);
+                for(let j = 0; j < k; j++)
+                {
+                    checkbox_creat(i, data[i - 10].question[j], j);
+                }              
+            }
+        }
+    })
+}
+
+
+        function checkbox_creat(p, Q, q_n)
+        {
+
+            const container = document.getElementById("itemList");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.name = "option";
+            checkbox.value = p;
+                
+            const label = document.createElement("label");
+            label.style = "font-size:30px";
+            label.setAttribute("name", q_n);
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(`第${p}頁：${Q}`));
+
+            container.appendChild(label);
+            container.appendChild(document.createElement("br"));
+         
+        }
+
+        const selectedOptions = []; //儲存頁數
+        const questionNumber = []; //儲存題號
+        function submitForm() {
+			const form = document.forms[0];
+
+			for (let i = 0; i < form.option.length; i++) {
+				if (form.option[i].checked) {
+					selectedOptions.push(form.option[i].value);
+                    let q_n = form.option[i].parentNode.getAttribute('name');
+                    questionNumber.push(q_n);
+				}
+			}
+
+			console.log(selectedOptions);
+            console.log(questionNumber);
+		}
+
+
+    </script>

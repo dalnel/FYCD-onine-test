@@ -2,7 +2,7 @@
 :root {
   --card-width: 200px;
   --card-height: 300px;
-  --card-transition-duration: 800ms;
+  --card-transition-duration: 380ms;
   --card-transition-easing: ease;
 }
 
@@ -68,7 +68,7 @@ button:focus {
   transform: translate(-50%, -50%) translateX(var(--image-translate-offset, 0));
   width: 180%;
   height: 180%;
-  transition: transform 1000ms ease, opacity 1000ms ease;
+  transition: transform 500ms ease, opacity 500ms ease;
   overflow: hidden;
 }
 .app__bg__image img {
@@ -80,11 +80,15 @@ button:focus {
   opacity: 1;
   --image-translate-offset: 0;
 }
-.app__bg__image.previous--image, .app__bg__image.next--image {
+.app__bg__image.previous--image, .app__bg__image.next--image, .app__bg__image.nextprevious--image{
   opacity: 0;
 }
 .app__bg__image.previous--image {
   --image-translate-offset: -25%;
+}
+
+.app__bg__image.nextprevious--image {
+  --image-translate-offset: 25%;
 }
 .app__bg__image.next--image {
   --image-translate-offset: 25%;
@@ -96,7 +100,7 @@ button:focus {
   height: auto;
 }
 .cardList__btn {
-  --btn-size: 90px;
+  --btn-size: 80px;
   width: var(--btn-size);
   height: var(--btn-size);
   position: absolute;
@@ -173,11 +177,17 @@ button:focus {
   --card-translateX-offset: calc(-1 * var(--card-width) * 1.1);
   --card-rotation-offset: 25deg;
 }
+
+.card.nextprevious--card {
+  --card-translateX-offset: calc(-1 * var(--card-width) * 2.1);
+  --card-rotation-offset: 35deg;
+}
+
 .card.next--card {
   --card-translateX-offset: calc(var(--card-width) * 1.1);
   --card-rotation-offset: -25deg;
 }
-.card.previous--card, .card.next--card {
+.card.previous--card, .card.next--card, .card.nextprevious--card {
   --card-scale-offset: 0.9;
   --opacity: 0.4;
 }
@@ -253,7 +263,7 @@ button:focus {
   opacity: 1;
   display: block;
 }
-.info.previous--info, .info.next--info {
+.info.previous--info, .info.next--info, .info.nextprevious--info {
   opacity: 0;
   display: none;
 }
@@ -312,7 +322,7 @@ button:focus {
   color: #fff;
   font-size: 1.8rem;
   backface-visibility: hidden;
-  transition: all 150ms ease;
+  transition: all 300ms ease;
 }
 .support a:hover {
   transform: scale(1.1);

@@ -33,7 +33,7 @@ function creatQuestion(sp,ep,rn) {
             for (let i = 0; i < rn; i++) {
                 let j = getRandom(sp,ep); //隨機生成頁數
                 let k = Object.keys(data[j].question).length;
-                let l = Math.floor(Math.random() * k); //隨機生成上面頁數下的題數
+                let l = Math.floor(Math.random() * k); //隨機生成上面頁數下的"題數"
                 fullAnswer.push(data[j].answer_full[l]); //儲存完整的答案
                 fuzzyAnswer.push(data[j].answer_fuzzy[l]); //儲存模糊答案
                 console.log(fuzzyAnswer[i]);
