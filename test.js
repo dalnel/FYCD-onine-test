@@ -5,17 +5,6 @@ let rn;
 $("#send").hide();
 $("#retest").hide();
 
-
-$("#start").click(function () { 
-    
-    let sp = $("#sp").val() - 10;
-    let ep = $("#ep").val() - 10;
-    rn = $("#review_number").val();
-    $("#send").show();
-    $("#retest").hide();
-    creatQuestion(sp, ep, rn); 
-});
-
 function creatQuestion(sp,ep,rn) {
     $.ajax({
         url: "QA.json",//同文件夹下的json文件路径
@@ -104,12 +93,9 @@ $("#send").click(function () {
 $("#retest").click(function () {
 
     $(".all").html("");
-    let sp = $("#sp").val() - 10;
-    let ep = $("#ep").val() - 10;
-    rn = $("#review_number").val();
     $("#retest").hide();
     $("#send").show();
-    creatQuestion(sp, ep, rn); 
+    init();
 
 });
 
@@ -142,3 +128,28 @@ function rightAnswer(correctRate, i){
     }    
 
 };
+
+function init() {
+    var url = location.href;
+    
+    //取得問號之後的值
+    var temp = url.split("?");
+
+    //將值再度分開
+    var vars = temp[1].split("&");
+
+    //一一顯示出來
+    for (var i = 0; i < vars.length; i++) {
+     console.log(vars[i]);   
+    };
+    /*console.log(vars[0].split("sp=")[1]);
+    console.log(vars[1].split("ep=")[1]);
+    console.log(vars[2].split("rn=")[1]);*/
+    let sp = vars[0].split("sp=")[1];
+    let ep = vars[1].split("ep=")[1];
+     rn = vars[2].split("rn=")[1];
+    $("#send").show();
+    creatQuestion(sp, ep, rn);
+};
+
+init();

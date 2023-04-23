@@ -19,7 +19,9 @@ $("#send").click(function (){
     if(select == "1" && !error)
     {
         console.log("1");
-        //document.location.href ='review.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();     
+        var sp = $("#sp").val() - 10;
+        var ep = $("#ep").val() - 10
+        document.location.href ='test.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();     
     }
     else if(select == "2" && !error)
     {
