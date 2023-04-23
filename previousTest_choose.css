@@ -1,0 +1,31 @@
+.accordion-header {
+    background-color: #eeeeee;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 30px;
+  }
+  
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+  }
+  
+  .accordion-item.active .accordion-content {
+    max-height: 1000px;
+  }
+
+  li{
+    margin: 20px;
+  }
+
+  li > span{
+    margin-right: 10px;
+    font-size: 25px;
+  }
+
+  li > button{
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
