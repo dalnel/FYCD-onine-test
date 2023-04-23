@@ -1,5 +1,5 @@
 $("#test").click(function () {
-    $(location).attr("href","./test.html");
+    $(location).attr("href","./pageChoice.html?select=1");
 })
 
 $("#review").click(function () {
@@ -12,5 +12,5 @@ $("#creat").click(function () {
 })
 
 $("#Previous").click(function () {
-    $(location).attr("href","./previousTest_choise.html");
+    $(location).attr("href","./previousTest_choose.html");
 })
