@@ -26,13 +26,13 @@ function creatQuestion(sp,ep,rn) {
                 fullAnswer.push(data[j].answer_full[l]); //儲存完整的答案
                 fuzzyAnswer.push(data[j].answer_fuzzy[l]); //儲存模糊答案
                 console.log(fuzzyAnswer[i]);
-                creat(data[j].question[l], i);
+                creat(data[j].question[l], i, fullAnswer[i]);
             }
         }
     })
 }
 
-function creat(question, i) {
+function creat(question, i, fullAnswer) {
     var el = $(".all");
     var aa = `<section class="main">
     <p>
@@ -48,6 +48,11 @@ function creat(question, i) {
         <input type="text" id="answer${i}" >
     </div>          
      
+    <div class="test_ans" style="display:none">
+        <p>正確解答: </p>
+        <h1>${fullAnswer}</h1>
+    </div> 
+
     </section>`;
     el.append(aa);
 }
@@ -87,6 +92,7 @@ $("#send").click(function () {
     }
     $("#send").hide();
     $("#retest").show();
+    $(".test_ans").toggle();
 
 });
 
@@ -147,7 +153,9 @@ function init() {
     console.log(vars[2].split("rn=")[1]);*/
     let sp = vars[0].split("sp=")[1];
     let ep = vars[1].split("ep=")[1];
-     rn = vars[2].split("rn=")[1];
+    rn = vars[2].split("rn=")[1];
+    fuzzyAnswer = [];
+    fullAnswer = [];
     $("#send").show();
     creatQuestion(sp, ep, rn);
 };
