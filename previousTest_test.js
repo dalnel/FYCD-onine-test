@@ -68,7 +68,7 @@ $("#send").click(function() {
         }
         else
         {
-            for(let j = 0; j <= fuzzyAnswer[i].length; j++)
+            for(let j = 0; j < fuzzyAnswer[i].length; j++)
             {
                 //console.log(fuzzyAnswer[j].length);
                 console.log(fuzzyAnswer[i][j]);
