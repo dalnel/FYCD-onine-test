@@ -7,7 +7,7 @@ $("#retest").hide();
 
 function creatQuestion(sp,ep,rn) {
     $.ajax({
-        url: "QA.json",//同文件夹下的json文件路径
+        url: "../QA_new.json",//同文件夕下的json文件路径
         type: "GET",//请求方式为get
         dataType: "json", //返回数据格式为json
         success: function (data) {//请求成功完成后要执行的方法 

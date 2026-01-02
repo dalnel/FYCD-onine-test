@@ -19,24 +19,24 @@ $("#send").click(function (){
     if(select == "1" && !error)
     {
         console.log("1");
-        var sp = $("#sp").val() - 10;
-        var ep = $("#ep").val() - 10
+        var sp = $("#sp").val();
+        var ep = $("#ep").val();
         document.location.href ='test.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();     
     }
     else if(select == "2" && !error)
     {
         $(".test").hide();
         console.log("2");
-        var sp = $("#sp").val() - 10;
-        var ep = $("#ep").val() - 10
+        var sp = $("#sp").val();
+        var ep = $("#ep").val();
         document.location.href ='review.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();      
     }
     else if(select == "3" && !error)
     {
         $(".test").hide();
         console.log("3");
-        var sp = $("#sp").val() - 10;
-        var ep = $("#ep").val() - 10
+        var sp = $("#sp").val();
+        var ep = $("#ep").val();
         document.location.href ='creat.html?sp=' + sp + '&ep=' + ep + '&rn=' + $("#review_number").val();  
     }
 })

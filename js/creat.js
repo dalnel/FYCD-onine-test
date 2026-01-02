@@ -6,7 +6,7 @@ let question = "";
 
 function creatQuestion(sp,ep, rn) {
     $.ajax({
-        url: "QA.json",//同文件夹下的json文件路径
+        url: "../QA_new.json",//同文件夹下的json文件路径
         type: "GET",//请求方式为get
         dataType: "json", //返回数据格式为json
         success: function (data) {//请求成功完成后要执行的方法 
@@ -27,47 +27,28 @@ function creatQuestion(sp,ep, rn) {
                     fuzzy_temp.push(data[j].answer_fuzzy[l][y]);
                 } //儲存模糊答案
 
-                creat(data[j].question[l], i, data[j].answer_full[l], fuzzy_temp, data[j].page)
+                creat(data[j].question[l], i, data[j].answer_full[l], fuzzy_temp)
                 fuzzy_temp = [];
             }
         }
     })
 }
 
-function creat(question, i, answer_full, answer_fuzzy, p) {
+function creat(question, i, answer_full, answer_fuzzy) {
     var el = $(".all");
     var aa = `<section class="main">
     <p>
-        <label style="font-size:17px">問題(P${p})：</label> 
+        <label style="font-size:20px">問題${i+1}：</label> 
     </p>
     <h1 id="q${i}">${question}</h1> 
 
-    <p id="a${i}">
-        <label>答案:</label>
-    </p> 
-
-    <div>
-    <h1 id="afl_${i}">${answer_full}</h1>
-    </div> 
-
-    <p id="a${i}">
-    <label>關鍵詞:</label>
-    </p> 
-    
-    <div>
-    <h1 id="afz_${i}">${answer_fuzzy}</h1>
-    </div>                   
+    <div class="input_text">
+        <input type="text" id="answer${i}" >
+    </div>    
      
     </section>`;
     el.append(aa);
 }
-
-$("#send").click(function () {
-
-    $(".all").html("");
-    init();
-
-});
 
 function getRandom(min,max){
     /*console.log(min);

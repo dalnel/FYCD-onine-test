@@ -4,7 +4,7 @@
 	<title>考題選擇</title>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/765cc1e3ed.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./previousTest_choose.css">
+    <link rel="stylesheet" href="../css/previousTest_choose.css">
 </head>
 <body>
     <div class="accordion">
@@ -17,14 +17,15 @@
               <li>
                 <span>110年講培班測驗題庫(<a href="https://github.com/dalnel/FYCD-onine-test/tree/main/%E8%80%83%E5%8F%A4%E9%A1%8C">詳細題庫說明按這</a>)</span>
                 <br>
-                <button onclick='location.href=("./previousTest_review.html")'>複習(20題)</button>
-                <button onclick='location.href=("./previousTest_test.html")'>模擬測驗(20題)</button>
+                <button onclick='location.href=("./previousTest_review.html?1")'>複習(20題)</button>
+                <button onclick='location.href=("./previousTest_test.html?1")'>模擬測驗(20題)</button>
               </li>
               <!-- <li>
                 <span>小項1-2</span>
                 <button>按鈕1</button>
                 <button>按鈕2</button>
               </li>
+              
               <li>
                 <span>小項1-3</span>
                 <button>按鈕1</button>
@@ -43,15 +44,19 @@
             </ul>
           </div>
         </div>
-        <!-- <div class="accordion-item">
-          <div class="accordion-header">大項2</div>
+        <div class="accordion-item">
+          <div class="accordion-header">114年
+            <i class="fa-solid fa-caret-down fa-beat-fade fa-2xs"></i>
+          </div>
           <div class="accordion-content">
             <ul>
               <li>
-                <span>小項2-1</span>
-                <button>按鈕1</button>
-                <button>按鈕2</button>
+                <span>2025年台北道場講培班測驗題庫(<a href="https://github.com/dalnel/FYCD-onine-test/tree/main/%E8%80%83%E5%8F%A4%E9%A1%8C">詳細題庫說明按這</a>)</span>
+                <br>
+                <button onclick='location.href=("./previousTest_review.html?2")'>複習(20題)</button>
+                <button onclick='location.href=("./previousTest_test.html?2")'>模擬測驗(20題)</button>
               </li>
+              <!--
               <li>
                 <span>小項2-2</span>
                 <button>按鈕1</button>
@@ -72,11 +77,12 @@
                 <button>按鈕1</button>
                 <button>按鈕2</button>
               </li>
+              -->
             </ul>
-          </div> -->
+          </div>
         </div>
       </div>
       </body>
 
-    <script type="text/javascript" src="./previousTest_choose.js"></script>
+    <script type="text/javascript" src="../js/previousTest_choose.js"></script>
 </html>
